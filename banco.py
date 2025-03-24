@@ -11,6 +11,7 @@ def menu():
 
     -> """
     return input (textwrap.dedent(menu))
+
 def depositar(saldo, valor, extrato, /):
 
     if valor > 0:
@@ -41,6 +42,19 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
         print("Valor invalido!")
     
     return saldo, extrato
+
+def exibir_extrato(saldo,/, *, extrato):
+    print("\n================ EXTRATO ================")
+    print("Não foram realizadas movimentações." if not extrato else extrato)
+    print(f"\nSaldo: R$ {saldo:.2f}")
+    print("==========================================")
+
+
+def criar_usuario(usuarios):
+    
+
+
+
     
 
 def main():
@@ -74,10 +88,7 @@ def main():
                 )
             
             elif opcao == "3":
-                print("\n================ EXTRATO ================")
-                print("Não foram realizadas movimentações." if not extrato else extrato)
-                print(f"\nSaldo: R$ {saldo:.2f}")
-                print("==========================================")
+                exibir_extrato(saldo, extrato=extrato)
             
             elif opcao == "0":
                 print("Finalizando Aplicação....")
