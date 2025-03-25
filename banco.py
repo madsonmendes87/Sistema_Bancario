@@ -66,6 +66,12 @@ def criar_usuario(usuarios):
 
     print("Usuario inserido com sucesso!")
 
+def filtrar_usuario(cpf, usuarios):
+    usuarios_filtrados = [usuario for usuario in usuarios if usuario["cpf"] == cpf]
+    return usuarios_filtrados[0] if usuarios_filtrados else None
+
+def criar_conta(agencia, numero_conta, usuarios):
+
 
 
 
@@ -107,6 +113,13 @@ def main():
             
             elif opcao == "4":
                 criar_usuario(usuarios)
+            
+            elif opcao == "5":
+                numero_conta = len(contas) + 1
+                conta = criar_conta(AGENCIA, numero_conta, usuarios)
+
+                if conta:
+                    contas.append(conta)
             
             elif opcao == "0":
                 print("Finalizando Aplicação....")
