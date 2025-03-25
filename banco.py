@@ -7,6 +7,7 @@ def menu():
         1 - Depositar
         2 - Sacar
         3 - Extrato
+        4 - Criar Usuario
         0 - Sair
 
     -> """
@@ -51,7 +52,21 @@ def exibir_extrato(saldo,/, *, extrato):
 
 
 def criar_usuario(usuarios):
-    
+    cpf = input("Inform o CPF somente numeros: ")
+    usuario = filtrar_usuario(cpf, usuarios)
+
+    if usuario:
+        print("CPF já cadastrado!")
+        return
+    nome = input("Informe o nome completo: ")
+    data_nascimento = input("Informe a data de nascimento: ")
+    endereco = input("Informe o endereço: ")
+
+    usuarios.append({"nome": nome, "data_nascimento":data_nascimento, "cpf":cpf, "endereco": endereco})
+
+    print("Usuario inserido com sucesso!")
+
+
 
 
 
@@ -89,6 +104,9 @@ def main():
             
             elif opcao == "3":
                 exibir_extrato(saldo, extrato=extrato)
+            
+            elif opcao == "4":
+                criar_usuario(usuarios)
             
             elif opcao == "0":
                 print("Finalizando Aplicação....")
