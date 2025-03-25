@@ -8,6 +8,7 @@ def menu():
         2 - Sacar
         3 - Extrato
         4 - Criar Usuario
+        5 - Criar Conta
         0 - Sair
 
     -> """
@@ -79,7 +80,15 @@ def criar_conta(agencia, numero_conta, usuarios):
         return{"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
     print("Usuario não encontrado!")
 
-
+def listar_contas(contas):
+    for conta in contas:
+        linha = """
+            Agencia: {conta['agencia']}
+            Conta: {conta['numero_conta']}
+            Titular: {conta['usuario']['conta']}    
+        """
+        print("=" * 100)
+        print(textwrap.dedent(linha))
 
 
     
@@ -126,6 +135,8 @@ def main():
 
                 if conta:
                     contas.append(conta)
+            elif opcao == "6":
+                #listarcontas
             
             elif opcao == "0":
                 print("Finalizando Aplicação....")
