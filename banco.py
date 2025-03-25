@@ -9,6 +9,7 @@ def menu():
         3 - Extrato
         4 - Criar Usuario
         5 - Criar Conta
+        6 - Listar Contas
         0 - Sair
 
     -> """
@@ -73,7 +74,7 @@ def filtrar_usuario(cpf, usuarios):
 
 def criar_conta(agencia, numero_conta, usuarios):
     cpf = input("Informe o CPF somente numeros: ")
-    usuario = filtrar_usuario(cpf, usuario)
+    usuario = filtrar_usuario(cpf, usuarios)
 
     if usuario:
         print("Conta criada com sucesso!")
@@ -82,17 +83,13 @@ def criar_conta(agencia, numero_conta, usuarios):
 
 def listar_contas(contas):
     for conta in contas:
-        linha = """
+        linha = f"""
             Agencia: {conta['agencia']}
             Conta: {conta['numero_conta']}
-            Titular: {conta['usuario']['conta']}    
+            Titular: {conta['usuario']['nome']}    
         """
-        print("=" * 100)
-        print(textwrap.dedent(linha))
-
-
+        print(linha)
     
-
 def main():
         saldo = 0
         limite = 500
@@ -136,7 +133,7 @@ def main():
                 if conta:
                     contas.append(conta)
             elif opcao == "6":
-                #listarcontas
+                listar_contas(contas)
             
             elif opcao == "0":
                 print("Finalizando Aplicação....")
